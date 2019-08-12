@@ -9,6 +9,7 @@ import {
   SafeAreaView,
   StyleSheet
 } from "react-native";
+import { GoogleSignin, GoogleSigninButton } from "react-native-google-signin";
 
 export default class AuthorizationScreen extends React.Component {
   constructor(props) {
@@ -63,6 +64,12 @@ export default class AuthorizationScreen extends React.Component {
               <Text>Sign In</Text>
             </View>
           </TouchableOpacity>
+
+          <GoogleSigninButton
+            style={{ width: 192, height: 48 }}
+            size={GoogleSigninButton.Size.Wide}
+            color={GoogleSigninButton.Color.Dark}
+          />
         </View>
       </SafeAreaView>
     );
