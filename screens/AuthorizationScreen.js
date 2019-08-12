@@ -1,9 +1,11 @@
 import React from "react";
 import {
+  Alert,
   Image,
   View,
   Text,
   TextInput,
+  TouchableOpacity,
   SafeAreaView,
   StyleSheet
 } from "react-native";
@@ -12,7 +14,19 @@ export default class AuthorizationScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = { login: "", password: "" };
+    this.onPressSignIn = this.onPressSignIn.bind();
   }
+
+  onPressSignIn = () => {
+    const { login, password } = this.state;
+    if (login !== "" && password !== "") {
+      console.log(`${login} ${password}`);
+      const { navigation } = this.props;
+      navigation.navigate("HomeScreen");
+    } else {
+      Alert.alert("Fill the fields");
+    }
+  };
 
   render() {
     const { login, password } = this.state;
@@ -40,6 +54,15 @@ export default class AuthorizationScreen extends React.Component {
               keyboardType="email-address"
             />
           </View>
+
+          <TouchableOpacity
+            style={{ paddingBottom: 16 }}
+            onPress={this.onPressSignIn}
+          >
+            <View>
+              <Text>Sign In</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </SafeAreaView>
     );
