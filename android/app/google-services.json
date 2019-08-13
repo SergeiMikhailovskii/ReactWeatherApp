@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "300902554045",
+    "firebase_url": "https://reactweatherapp-10b49.firebaseio.com",
+    "project_id": "reactweatherapp-10b49",
+    "storage_bucket": "reactweatherapp-10b49.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:300902554045:android:208ece942b664da4",
+        "android_client_info": {
+          "package_name": "com.reactweatherapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "300902554045-16l0lokjsptan35td77undr1o8peik63.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtAv0o5KXHvVMeeG0a9K-BfSoHBVawRGU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "300902554045-16l0lokjsptan35td77undr1o8peik63.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
