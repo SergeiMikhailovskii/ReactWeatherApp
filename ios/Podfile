@@ -33,6 +33,8 @@ target 'ReactWeatherApp' do
   pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
   pod 'GoogleSignIn', '~> 4.4.0'
 
+  pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
+
   target 'ReactWeatherAppTests' do
     inherit! :search_paths
     # Pods for testing
