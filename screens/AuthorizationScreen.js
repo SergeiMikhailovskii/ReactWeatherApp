@@ -1,19 +1,11 @@
 import React from "react";
-import {
-  Alert,
-  Image,
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  SafeAreaView,
-  StyleSheet
-} from "react-native";
+import { Alert, Image, View, SafeAreaView, StyleSheet } from "react-native";
 import {
   GoogleSignin,
   GoogleSigninButton,
   statusCodes
 } from "react-native-google-signin";
+import { Button, Input } from "react-native-elements";
 
 export default class AuthorizationScreen extends React.Component {
   constructor(props) {
@@ -83,36 +75,35 @@ export default class AuthorizationScreen extends React.Component {
           />
 
           <View style={styles.loginAndPassword}>
-            <TextInput
+            <Input
               placeholder="Enter login"
               onChangeText={login => this.setState({ login })}
               value={login}
-              autoCapitalize="none"
-              keyboardType="email-address"
+              inputStyle="email-address"
+              label={"Login"}
             />
           </View>
 
           <View style={styles.loginAndPassword}>
-            <TextInput
+            <Input
               placeholder="Enter password"
               onChangeText={password => this.setState({ password })}
               value={password}
               autoCapitalize="none"
-              keyboardType="email-address"
+              inputStyle="email-address"
+              label={"Password"}
             />
           </View>
 
-          <TouchableOpacity
+          <Button
             style={{ paddingBottom: 16 }}
+            title="Sign In"
+            type="outline"
             onPress={this.onPressSignIn}
-          >
-            <View>
-              <Text>Sign In</Text>
-            </View>
-          </TouchableOpacity>
+          />
 
           <GoogleSigninButton
-            style={{ width: 230, height: 48 }}
+            style={{ width: "100%", height: 48 }}
             size={GoogleSigninButton.Size.Wide}
             color={GoogleSigninButton.Color.Dark}
             onPress={this.signIn}
@@ -136,8 +127,6 @@ const styles = StyleSheet.create({
     marginBottom: 32
   },
   loginAndPassword: {
-    marginBottom: 16,
-    borderBottomColor: "#000",
-    borderBottomWidth: 1
+    marginBottom: 16
   }
 });
