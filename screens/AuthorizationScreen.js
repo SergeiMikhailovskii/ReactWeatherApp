@@ -1,19 +1,11 @@
 import React from "react";
-import {
-  Alert,
-  Image,
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  SafeAreaView,
-  StyleSheet
-} from "react-native";
+import { Alert, Image, View, SafeAreaView, StyleSheet } from "react-native";
 import {
   GoogleSignin,
   GoogleSigninButton,
   statusCodes
 } from "react-native-google-signin";
+import { Button, Input } from "react-native-elements";
 
 export default class AuthorizationScreen extends React.Component {
   constructor(props) {
@@ -23,13 +15,15 @@ export default class AuthorizationScreen extends React.Component {
 
     GoogleSignin.configure({
       scopes: ["https://www.googleapis.com/auth/drive.readonly"], // what API you want to access on behalf of the user, default is email and profile
-      webClientId: "300902554045-16l0lokjsptan35td77undr1o8peik63.apps.googleusercontent.com", // client ID of type WEB for your server (needed to verify user ID and offline access)
+      webClientId:
+        "300902554045-16l0lokjsptan35td77undr1o8peik63.apps.googleusercontent.com", // client ID of type WEB for your server (needed to verify user ID and offline access)
       offlineAccess: true, // if you want to access Google API on behalf of the user FROM YOUR SERVER
       hostedDomain: "", // specifies a hosted domain restriction
       loginHint: "", // [iOS] The user's ID, or email address, to be prefilled in the authentication UI if possible. [See docs here](https://developers.google.com/identity/sign-in/ios/api/interface_g_i_d_sign_in.html#a0a68c7504c31ab0b728432565f6e33fd)
       forceConsentPrompt: true, // [Android] if you want to show the authorization prompt at each login.
       accountName: "", // [Android] specifies an account name on the device that should be used
-      iosClientId: "300902554045-aujqhtio4h10jadt15ddqjdj10sh1tu5.apps.googleusercontent.com" // [iOS] optional, if you want to specify the client ID of type iOS (otherwise, it is taken from GoogleService-Info.plist)
+      iosClientId:
+        "300902554045-aujqhtio4h10jadt15ddqjdj10sh1tu5.apps.googleusercontent.com" // [iOS] optional, if you want to specify the client ID of type iOS (otherwise, it is taken from GoogleService-Info.plist)
     });
   }
 
@@ -49,6 +43,7 @@ export default class AuthorizationScreen extends React.Component {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
       this.setState({ userInfo });
+      console.log(userInfo);
       const { navigation } = this.props;
       navigation.navigate("HomeScreen");
     } catch (error) {
@@ -73,39 +68,42 @@ export default class AuthorizationScreen extends React.Component {
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.container}>
-          <Image style={styles.logo} source={require("../asset/logo.png")} />
+          <Image
+            style={styles.logo}
+            source={require("../asset/logo.png")}
+            resizeMode={"center"}
+          />
 
           <View style={styles.loginAndPassword}>
-            <TextInput
+            <Input
               placeholder="Enter login"
               onChangeText={login => this.setState({ login })}
               value={login}
-              autoCapitalize="none"
-              keyboardType="email-address"
+              inputStyle="email-address"
+              label={"Login"}
             />
           </View>
 
           <View style={styles.loginAndPassword}>
-            <TextInput
+            <Input
               placeholder="Enter password"
               onChangeText={password => this.setState({ password })}
               value={password}
               autoCapitalize="none"
-              keyboardType="email-address"
+              inputStyle="email-address"
+              label={"Password"}
             />
           </View>
 
-          <TouchableOpacity
+          <Button
             style={{ paddingBottom: 16 }}
+            title="Sign In"
+            type="outline"
             onPress={this.onPressSignIn}
-          >
-            <View>
-              <Text>Sign In</Text>
-            </View>
-          </TouchableOpacity>
+          />
 
           <GoogleSigninButton
-            style={{ width: 230, height: 48 }}
+            style={{ width: "100%", height: 48 }}
             size={GoogleSigninButton.Size.Wide}
             color={GoogleSigninButton.Color.Dark}
             onPress={this.signIn}
@@ -129,8 +127,6 @@ const styles = StyleSheet.create({
     marginBottom: 32
   },
   loginAndPassword: {
-    marginBottom: 16,
-    borderBottomColor: "#000",
-    borderBottomWidth: 1
+    marginBottom: 16
   }
 });
