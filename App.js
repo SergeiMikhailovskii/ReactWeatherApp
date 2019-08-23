@@ -13,9 +13,14 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 
 import AppNavigator from "./navigation/AppNavigator";
 
+import SplashScreen from "react-native-splash-screen";
+
 export default class App extends React.Component {
   render() {
     return <AppNavigator />;
+  }
+  componentDidMount() {
+    SplashScreen.hide();
   }
 }
 
