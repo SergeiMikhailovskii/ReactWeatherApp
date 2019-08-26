@@ -100,6 +100,6 @@ export default class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20
-  }
+    padding: 20,
+  },
 });
